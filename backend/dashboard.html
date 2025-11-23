@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後台管理系統 - 蔬果線上型錄</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Chart.js for 圖表 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Admin CSS -->
+    <link href="css/admin.css" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- 側邊欄 -->
+        <nav class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-brand">
+                    <i class="fas fa-leaf"></i>
+                    蔬果管理系統
+                </a>
+            </div>
+            
+            <div class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">主要功能</div>
+                    <div class="nav-item">
+                        <a href="dashboard.html" class="nav-link active">
+                            <i class="fas fa-tachometer-alt"></i>
+                            儀表板
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">產品管理</div>
+                    <div class="nav-item">
+                        <a href="products.html" class="nav-link">
+                            <i class="fas fa-box"></i>
+                            產品列表
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="product-categories.html" class="nav-link">
+                            <i class="fas fa-tags"></i>
+                            產品分類
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="inventory.html" class="nav-link">
+                            <i class="fas fa-warehouse"></i>
+                            庫存管理
+                            <span class="badge">5</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">訂單管理</div>
+                    <div class="nav-item">
+                        <a href="orders.html" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            訂單列表
+                            <span class="badge">12</span>
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="customers.html" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            客戶管理
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">內容管理</div>
+                    <div class="nav-item">
+                        <a href="news.html" class="nav-link">
+                            <i class="fas fa-newspaper"></i>
+                            最新消息
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="blog.html" class="nav-link">
+                            <i class="fas fa-blog"></i>
+                            部落格文章
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="pages.html" class="nav-link">
+                            <i class="fas fa-file-alt"></i>
+                            頁面管理
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">系統設定</div>
+                    <div class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            系統設定
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="users.html" class="nav-link">
+                            <i class="fas fa-user-cog"></i>
+                            用戶管理
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- 主要內容區 -->
+        <main class="admin-main">
+            <!-- 頂部導航欄 -->
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="dashboard.html">首頁</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                儀表板
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="搜尋..." class="form-control">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="user-menu">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="管理員" class="user-avatar">
+                    </div>
+                </div>
+            </header>
+            
+            <!-- 內容區域 -->
+            <div class="admin-content">
+                <div class="content-header">
+                    <h1 class="page-title">儀表板</h1>
+                    <p class="page-description">蔬果線上型錄管理系統總覽</p>
+                </div>
+                
+                <!-- 統計卡片 -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">產品總數</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +12% 比上月
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card success">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-number">89</div>
+                        <div class="stat-label">本月訂單</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +24% 比上月
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card warning">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number">1,243</div>
+                        <div class="stat-label">註冊客戶</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +8% 比上月
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card info">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-number">$45,678</div>
+                        <div class="stat-label">本月營收</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +18% 比上月
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 圖表和最新活動 -->
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">銷售趨勢</h3>
+                                <div class="card-actions">
+                                    <select class="form-select form-select-sm" style="width: auto;">
+                                        <option>最近7天</option>
+                                        <option>最近30天</option>
+                                        <option>最近3個月</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="salesChart" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">熱門產品</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="popular-products">
+                                    <div class="product-item d-flex align-items-center mb-3">
+                                        <img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" 
+                                             alt="有機波菜" class="product-thumb me-3" style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover;">
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold">有機波菜</div>
+                                            <div class="small text-muted">銷量: 45件</div>
+                                        </div>
+                                        <div class="text-success fw-bold">$80</div>
+                                    </div>
+                                    
+                                    <div class="product-item d-flex align-items-center mb-3">
+                                        <img src="https://images.unsplash.com/photo-1445282768818-728615cc910a?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" 
+                                             alt="有機胡蘿蔔" class="product-thumb me-3" style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover;">
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold">有機胡蘿蔔</div>
+                                            <div class="small text-muted">銷量: 38件</div>
+                                        </div>
+                                        <div class="text-success fw-bold">$120</div>
+                                    </div>
+                                    
+                                    <div class="product-item d-flex align-items-center mb-3">
+                                        <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" 
+                                             alt="有機蘋果" class="product-thumb me-3" style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover;">
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold">有機蘋果</div>
+                                            <div class="small text-muted">銷量: 32件</div>
+                                        </div>
+                                        <div class="text-success fw-bold">$200</div>
+                                    </div>
+                                    
+                                    <div class="product-item d-flex align-items-center">
+                                        <img src="https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" 
+                                             alt="有機小白菜" class="product-thumb me-3" style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover;">
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold">有機小白菜</div>
+                                            <div class="small text-muted">銷量: 28件</div>
+                                        </div>
+                                        <div class="text-success fw-bold">$60</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 最新訂單和活動 -->
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">最新訂單</h3>
+                                <a href="orders.html" class="btn-admin btn-outline btn-sm">查看全部</a>
+                            </div>
+                            <div class="card-body p-0">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>訂單編號</th>
+                                            <th>客戶</th>
+                                            <th>金額</th>
+                                            <th>狀態</th>
+                                            <th>日期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#ORD-001</td>
+                                            <td>張小明</td>
+                                            <td>$450</td>
+                                            <td><span class="status-badge active">已確認</span></td>
+                                            <td>2024-11-23</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <a href="#" class="btn-admin btn-sm btn-primary">查看</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>#ORD-002</td>
+                                            <td>李美麗</td>
+                                            <td>$320</td>
+                                            <td><span class="status-badge pending">處理中</span></td>
+                                            <td>2024-11-23</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <a href="#" class="btn-admin btn-sm btn-primary">查看</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>#ORD-003</td>
+                                            <td>王大偉</td>
+                                            <td>$678</td>
+                                            <td><span class="status-badge active">已確認</span></td>
+                                            <td>2024-11-22</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <a href="#" class="btn-admin btn-sm btn-primary">查看</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">系統通知</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="notifications">
+                                    <div class="notification-item d-flex align-items-start mb-3">
+                                        <div class="notification-icon me-3">
+                                            <i class="fas fa-exclamation-triangle text-warning"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold">庫存不足警告</div>
+                                            <div class="small text-muted">有機波菜庫存剩餘5件</div>
+                                            <div class="small text-muted">5分鐘前</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="notification-item d-flex align-items-start mb-3">
+                                        <div class="notification-icon me-3">
+                                            <i class="fas fa-user-plus text-success"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold">新用戶註冊</div>
+                                            <div class="small text-muted">陳大華剛註冊成為會員</div>
+                                            <div class="small text-muted">1小時前</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="notification-item d-flex align-items-start mb-3">
+                                        <div class="notification-icon me-3">
+                                            <i class="fas fa-shopping-cart text-info"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold">新訂單</div>
+                                            <div class="small text-muted">收到來自林小姐的新訂單</div>
+                                            <div class="small text-muted">2小時前</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="notification-item d-flex align-items-start">
+                                        <div class="notification-icon me-3">
+                                            <i class="fas fa-sync text-primary"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold">系統更新</div>
+                                            <div class="small text-muted">庫存管理模組已更新</div>
+                                            <div class="small text-muted">1天前</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Admin JS -->
+    <script src="js/admin.js"></script>
+    
+    <!-- Dashboard specific scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化銷售趨勢圖表
+            const salesCtx = document.getElementById('salesChart');
+            if (salesCtx) {
+                new Chart(salesCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['11/17', '11/18', '11/19', '11/20', '11/21', '11/22', '11/23'],
+                        datasets: [{
+                            label: '銷售額',
+                            data: [1200, 1900, 1500, 2200, 1800, 2500, 2100],
+                            borderColor: '#2d5016',
+                            backgroundColor: 'rgba(45, 80, 22, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#f4d03f',
+                            pointBorderColor: '#2d5016',
+                            pointBorderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return '$' + value.toLocaleString();
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                }
+                            }
+                        },
+                        elements: {
+                            point: {
+                                hoverBackgroundColor: '#f4d03f'
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index'
+                        }
+                    }
+                });
+            }
+            
+            // 即時更新數據（模擬）
+            function updateRealTimeData() {
+                // 模擬即時數據更新
+                const statNumbers = document.querySelectorAll('.stat-number');
+                statNumbers.forEach(stat => {
+                    const currentValue = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
+                    const change = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
+                    if (change !== 0) {
+                        const newValue = Math.max(0, currentValue + change);
+                        stat.textContent = stat.textContent.includes('$') ? 
+                            '$' + newValue.toLocaleString() : 
+                            newValue.toLocaleString();
+                    }
+                });
+            }
+            
+            // 每30秒更新一次數據
+            setInterval(updateRealTimeData, 30000);
+        });
+    </script>
+</body>
+</html>

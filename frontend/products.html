@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品介紹 - 蔬果線上型錄</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-leaf me-2"></i>
+                蔬果型錄
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">關於我們</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">產品介紹</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">最新消息</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">部落格</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">問與答</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">聯絡我們</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="stores.html">購買據點</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 fw-bold text-white mb-3">產品介紹</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="index.html" class="text-white-50">首頁</a></li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">產品介紹</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-6 fw-bold text-primary mb-3">產品分類</h2>
+                    <p class="lead text-muted">新鮮有機蔬果，品質優良</p>
+                </div>
+            </div>
+            
+            <!-- Filter Tabs -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <ul class="nav nav-pills justify-content-center flex-wrap" id="productTabs">
+                        <li class="nav-item">
+                            <button class="nav-link active rounded-pill mx-2 mb-2" data-filter="all">
+                                <i class="fas fa-th-large me-2"></i>全部產品
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link rounded-pill mx-2 mb-2" data-filter="vegetables">
+                                <i class="fas fa-seedling me-2"></i>蔬菜類
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link rounded-pill mx-2 mb-2" data-filter="fruits">
+                                <i class="fas fa-apple-alt me-2"></i>水果類
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link rounded-pill mx-2 mb-2" data-filter="leafy">
+                                <i class="fas fa-leaf me-2"></i>葉菜類
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link rounded-pill mx-2 mb-2" data-filter="root">
+                                <i class="fas fa-carrot me-2"></i>根莖類
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Products Grid -->
+            <div class="row g-4" id="productsGrid">
+                <!-- 蔬菜類產品 -->
+                <div class="col-lg-4 col-md-6 product-item" data-category="vegetables leafy">
+                    <div class="product-card card border-0 shadow-sm h-100">
+                        <div class="product-image-container position-relative overflow-hidden">
+                            <img src="./images/green-vegetables.jpg" 
+                                 class="card-img-top" alt="有機波菜">
+                            <div class="product-overlay">
+                                <span class="badge bg-success position-absolute top-0 start-0 m-3">有機</span>
+                                <span class="badge bg-warning position-absolute top-0 end-0 m-3">推薦</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-primary mb-2">有機波菜</h5>
+                            <p class="card-text text-muted small mb-3">
+                                新鮮採收的有機波菜，富含鐵質和維生素，
+                                口感嫩綠清香，適合炒菜或做湯。
+                            </p>
+                            <div class="product-info d-flex justify-content-between align-items-center">
+                                <div class="price">
+                                    <span class="fw-bold text-success">NT$ 80</span>
+                                    <small class="text-muted">/把</small>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary w-100 rounded-pill">
+                                    <i class="fas fa-info-circle me-2"></i>查看詳情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="vegetables root">
+                    <div class="product-card card border-0 shadow-sm h-100">
+                        <div class="product-image-container position-relative overflow-hidden">
+                            <img src="./images/organic-produce.jpg" 
+                                 class="card-img-top" alt="有機胡蘿蔔">
+                            <div class="product-overlay">
+                                <span class="badge bg-success position-absolute top-0 start-0 m-3">有機</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-primary mb-2">有機胡蘿蔔</h5>
+                            <p class="card-text text-muted small mb-3">
+                                橙紅色澤的有機胡蘿蔔，富含β-胡蘿蔔素，
+                                甜脆可口，適合生食或烹煮。
+                            </p>
+                            <div class="product-info d-flex justify-content-between align-items-center">
+                                <div class="price">
+                                    <span class="fw-bold text-success">NT$ 120</span>
+                                    <small class="text-muted">/斤</small>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="far fa-star text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary w-100 rounded-pill">
+                                    <i class="fas fa-info-circle me-2"></i>查看詳情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="fruits">
+                    <div class="product-card card border-0 shadow-sm h-100">
+                        <div class="product-image-container position-relative overflow-hidden">
+                            <img src="./images/fresh-fruits.jpg" 
+                                 class="card-img-top" alt="有機蘋果">
+                            <div class="product-overlay">
+                                <span class="badge bg-success position-absolute top-0 start-0 m-3">有機</span>
+                                <span class="badge bg-warning position-absolute top-0 end-0 m-3">熱銷</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-primary mb-2">有機蘋果</h5>
+                            <p class="card-text text-muted small mb-3">
+                                紅潤香甜的有機蘋果，富含維生素C和纖維質，
+                                口感清脆多汁，營養豐富。
+                            </p>
+                            <div class="product-info d-flex justify-content-between align-items-center">
+                                <div class="price">
+                                    <span class="fw-bold text-success">NT$ 200</span>
+                                    <small class="text-muted">/斤</small>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary w-100 rounded-pill">
+                                    <i class="fas fa-info-circle me-2"></i>查看詳情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="vegetables leafy">
+                    <div class="product-card card border-0 shadow-sm h-100">
+                        <div class="product-image-container position-relative overflow-hidden">
+                            <img src="./images/leafy-greens.jpg" 
+                                 class="card-img-top" alt="有機小白菜">
+                            <div class="product-overlay">
+                                <span class="badge bg-success position-absolute top-0 start-0 m-3">有機</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-primary mb-2">有機小白菜</h5>
+                            <p class="card-text text-muted small mb-3">
+                                翠綠新鮮的有機小白菜，葉片柔嫩，
+                                富含鈣質和維生素，清淡爽口。
+                            </p>
+                            <div class="product-info d-flex justify-content-between align-items-center">
+                                <div class="price">
+                                    <span class="fw-bold text-success">NT$ 60</span>
+                                    <small class="text-muted">/把</small>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="far fa-star text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary w-100 rounded-pill">
+                                    <i class="fas fa-info-circle me-2"></i>查看詳情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="fruits">
+                    <div class="product-card card border-0 shadow-sm h-100">
+                        <div class="product-image-container position-relative overflow-hidden">
+                            <img src="./images/vegetables-basket.jpg" 
+                                 class="card-img-top" alt="有機橘子">
+                            <div class="product-overlay">
+                                <span class="badge bg-success position-absolute top-0 start-0 m-3">有機</span>
+                                <span class="badge bg-info position-absolute top-0 end-0 m-3">季節限定</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-primary mb-2">有機橘子</h5>
+                            <p class="card-text text-muted small mb-3">
+                                酸甜可口的有機橘子，維生素C含量豐富，
+                                果肉飽滿多汁，香氣濃郁。
+                            </p>
+                            <div class="product-info d-flex justify-content-between align-items-center">
+                                <div class="price">
+                                    <span class="fw-bold text-success">NT$ 150</span>
+                                    <small class="text-muted">/斤</small>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary w-100 rounded-pill">
+                                    <i class="fas fa-info-circle me-2"></i>查看詳情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 product-item" data-category="vegetables root">
+                    <div class="product-card card border-0 shadow-sm h-100">
+                        <div class="product-image-container position-relative overflow-hidden">
+                            <img src="./images/root-vegetables.jpg" 
+                                 class="card-img-top" alt="有機馬鈴薯">
+                            <div class="product-overlay">
+                                <span class="badge bg-success position-absolute top-0 start-0 m-3">有機</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-primary mb-2">有機馬鈴薯</h5>
+                            <p class="card-text text-muted small mb-3">
+                                粉質綿密的有機馬鈴薯，富含澱粉和維生素，
+                                適合炸、烤、煮等多種料理方式。
+                            </p>
+                            <div class="product-info d-flex justify-content-between align-items-center">
+                                <div class="price">
+                                    <span class="fw-bold text-success">NT$ 90</span>
+                                    <small class="text-muted">/斤</small>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="far fa-star text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary w-100 rounded-pill">
+                                    <i class="fas fa-info-circle me-2"></i>查看詳情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Features -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-6 fw-bold text-primary mb-3">產品特色</h2>
+                    <p class="lead text-muted">為什麼選擇我們的蔬果產品</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center p-4 h-100 bg-white rounded-3 shadow-sm">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-certificate fa-3x text-success"></i>
+                        </div>
+                        <h5 class="fw-bold text-primary mb-3">有機認證</h5>
+                        <p class="text-muted">
+                            所有產品均獲得國際有機認證，
+                            無農藥殘留，安心食用。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center p-4 h-100 bg-white rounded-3 shadow-sm">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-thermometer-half fa-3x text-warning"></i>
+                        </div>
+                        <h5 class="fw-bold text-primary mb-3">冷鏈保鮮</h5>
+                        <p class="text-muted">
+                            從採收到配送全程冷鏈保鮮，
+                            確保蔬果的新鮮度和營養價值。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center p-4 h-100 bg-white rounded-3 shadow-sm">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-clipboard-check fa-3x text-success"></i>
+                        </div>
+                        <h5 class="fw-bold text-primary mb-3">品質檢驗</h5>
+                        <p class="text-muted">
+                            每批產品都經過嚴格品質檢驗，
+                            確保達到最高的品質標準。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center p-4 h-100 bg-white rounded-3 shadow-sm">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-map-marked-alt fa-3x text-warning"></i>
+                        </div>
+                        <h5 class="fw-bold text-primary mb-3">產銷履歷</h5>
+                        <p class="text-muted">
+                            完整的產銷履歷追蹤系統，
+                            從農場到餐桌全程透明可查。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seasonal Products -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-6 fw-bold text-primary mb-3">當季推薦</h2>
+                    <p class="lead text-muted">新鮮當季蔬果，營養價值最高</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="seasonal-card bg-gradient-success rounded-3 p-4 text-white position-relative overflow-hidden">
+                        <div class="seasonal-bg position-absolute top-0 start-0 w-100 h-100"></div>
+                        <div class="position-relative z-index-2">
+                            <h4 class="fw-bold mb-3">
+                                <i class="fas fa-snowflake me-2"></i>
+                                冬季精選蔬菜
+                            </h4>
+                            <p class="mb-4">
+                                冬季盛產的根莖類蔬菜，營養豐富，
+                                適合燉湯和熱炒，溫暖您的冬日餐桌。
+                            </p>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-check me-2"></i>白蘿蔔、胡蘿蔔</li>
+                                <li><i class="fas fa-check me-2"></i>高麗菜、白菜</li>
+                                <li><i class="fas fa-check me-2"></i>馬鈴薯、地瓜</li>
+                            </ul>
+                            <button class="btn btn-warning rounded-pill">
+                                <i class="fas fa-shopping-cart me-2"></i>查看商品
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="seasonal-card bg-gradient-warning rounded-3 p-4 text-white position-relative overflow-hidden">
+                        <div class="seasonal-bg position-absolute top-0 start-0 w-100 h-100"></div>
+                        <div class="position-relative z-index-2">
+                            <h4 class="fw-bold mb-3 text-dark">
+                                <i class="fas fa-sun me-2"></i>
+                                冬季當季水果
+                            </h4>
+                            <p class="mb-4 text-dark">
+                                酸甜可口的冬季水果，富含維生素C，
+                                增強免疫力，是冬日最佳的營養補充。
+                            </p>
+                            <ul class="list-unstyled mb-4 text-dark">
+                                <li><i class="fas fa-check me-2"></i>橘子、柳丁</li>
+                                <li><i class="fas fa-check me-2"></i>蘋果、梨子</li>
+                                <li><i class="fas fa-check me-2"></i>草莓、柿子</li>
+                            </ul>
+                            <button class="btn btn-primary rounded-pill">
+                                <i class="fas fa-shopping-cart me-2"></i>查看商品
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h3 class="h2 fw-bold text-white mb-3">需要更多產品資訊？</h3>
+                    <p class="lead text-white-50 mb-4">
+                        歡迎聯絡我們的專業團隊，為您提供詳細的產品諮詢服務
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="contact.html" class="btn btn-warning btn-lg px-4 py-3 rounded-pill">
+                            <i class="fas fa-phone me-2"></i>
+                            立即諮詢
+                        </a>
+                        <a href="stores.html" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            購買據點
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <h5 class="fw-bold text-white mb-3">
+                            <i class="fas fa-leaf me-2 text-success"></i>
+                            蔬果型錄
+                        </h5>
+                        <p class="text-muted mb-3">
+                            提供最優質的有機蔬果，讓健康生活從餐桌開始。
+                        </p>
+                        <div class="social-links">
+                            <a href="#" class="text-muted me-3"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-muted me-3"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-muted me-3"><i class="fab fa-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold text-white mb-3">快速連結</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted text-decoration-none">首頁</a></li>
+                        <li><a href="about.html" class="text-muted text-decoration-none">關於我們</a></li>
+                        <li><a href="products.html" class="text-muted text-decoration-none">產品介紹</a></li>
+                        <li><a href="news.html" class="text-muted text-decoration-none">最新消息</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold text-white mb-3">服務項目</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="blog.html" class="text-muted text-decoration-none">部落格</a></li>
+                        <li><a href="faq.html" class="text-muted text-decoration-none">問與答</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none">聯絡我們</a></li>
+                        <li><a href="stores.html" class="text-muted text-decoration-none">購買據點</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h6 class="fw-bold text-white mb-3">聯絡資訊</h6>
+                    <div class="contact-info text-muted">
+                        <p><i class="fas fa-map-marker-alt me-2"></i>台北市信義區信義路五段7號</p>
+                        <p><i class="fas fa-phone me-2"></i>(02) 2345-6789</p>
+                        <p><i class="fas fa-envelope me-2"></i>info@freshvege.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 bg-secondary">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2025 蔬果型錄. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3">隱私政策</a>
+                    <a href="#" class="text-muted text-decoration-none">服務條款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    
+    <!-- Page specific scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Product filter functionality
+            const filterButtons = document.querySelectorAll('#productTabs button[data-filter]');
+            const productItems = document.querySelectorAll('.product-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter products
+                    productItems.forEach(item => {
+                        const categories = item.getAttribute('data-category').split(' ');
+                        
+                        if (filter === 'all' || categories.includes(filter)) {
+                            item.style.display = 'block';
+                            item.style.animation = 'fadeInUp 0.5s ease';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    
+    <!-- Page specific styles -->
+    <style>
+        .page-header {
+            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--soft-green) 100%);
+        }
+        
+        .nav-pills .nav-link {
+            color: var(--primary-green);
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-pills .nav-link.active,
+        .nav-pills .nav-link:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        .seasonal-card {
+            min-height: 300px;
+            background: linear-gradient(135deg, var(--primary-green), var(--soft-green)) !important;
+        }
+        
+        .seasonal-card:nth-child(2) {
+            background: linear-gradient(135deg, var(--warm-yellow), #f39c12) !important;
+        }
+        
+        .seasonal-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .bg-gradient-success {
+            background: linear-gradient(135deg, var(--primary-green), var(--soft-green)) !important;
+        }
+        
+        .bg-gradient-warning {
+            background: linear-gradient(135deg, var(--warm-yellow), #f39c12) !important;
+        }
+        
+        .z-index-2 {
+            z-index: 2;
+        }
+        
+        .product-item {
+            transition: all 0.3s ease;
+        }
+        
+        .product-item[style*="display: none"] {
+            animation: fadeOut 0.3s ease;
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.8); }
+        }
+    </style>
+</body>
+</html>

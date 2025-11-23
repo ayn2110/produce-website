@@ -1,0 +1,540 @@
+/* ==========================================
+   蔬果線上型錄 - 自訂樣式
+   配色方案：深綠色、橄欖綠、陽光黃色、淡奶油色
+   ========================================== */
+
+:root {
+    /* 主要顏色 */
+    --primary-green: #2d5016;        /* 深森林綠 */
+    --soft-green: #6b8e54;           /* 柔和橄欖綠 */
+    --warm-yellow: #f4d03f;          /* 溫暖陽光黃 */
+    --light-cream: #fef9e7;          /* 淡奶油色 */
+    --light-green: #a8cc8c;          /* 淡綠色 */
+    
+    /* 輔助顏色 */
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --dark-gray: #343a40;
+    --text-muted: #6c757d;
+    
+    /* 字體 */
+    --font-family: 'Noto Sans TC', sans-serif;
+    
+    /* 陰影 */
+    --shadow-sm: 0 0.125rem 0.25rem rgba(45, 80, 22, 0.075);
+    --shadow: 0 0.5rem 1rem rgba(45, 80, 22, 0.15);
+    --shadow-lg: 0 1rem 3rem rgba(45, 80, 22, 0.175);
+}
+
+/* ==========================================
+   全域樣式
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--dark-gray);
+    overflow-x: hidden;
+}
+
+/* 重新定義Bootstrap主題色彩 */
+.text-primary {
+    color: var(--primary-green) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-green) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--soft-green);
+    border-color: var(--soft-green);
+    color: var(--white);
+}
+
+.btn-warning {
+    background-color: var(--warm-yellow);
+    border-color: var(--warm-yellow);
+    color: var(--primary-green);
+    font-weight: 500;
+}
+
+.btn-warning:hover {
+    background-color: #f1c40f;
+    border-color: #f1c40f;
+    color: var(--primary-green);
+}
+
+.text-success {
+    color: var(--soft-green) !important;
+}
+
+.text-warning {
+    color: var(--warm-yellow) !important;
+}
+
+/* ==========================================
+   導航欄樣式
+   ========================================== */
+
+.navbar {
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    z-index: 1060;
+}
+
+.sticky-top {
+    z-index: 1050 !important;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--primary-green) !important;
+    font-weight: 700;
+}
+
+.navbar-nav .nav-link {
+    color: var(--primary-green) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem !important;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background-color: var(--light-cream);
+    color: var(--primary-green) !important;
+}
+
+/* ==========================================
+   Hero 區塊樣式
+   ========================================== */
+
+.hero-section {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--soft-green) 100%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffffff" opacity="0.08"/><circle cx="10" cy="60" r="0.8" fill="%23ffffff" opacity="0.06"/><circle cx="90" cy="40" r="0.7" fill="%23ffffff" opacity="0.09"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.5;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-image-container {
+    position: relative;
+    z-index: 2;
+    animation: fadeInRight 1s ease 0.3s both;
+}
+
+.hero-image-container img {
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================
+   特色區塊樣式
+   ========================================== */
+
+.features-section {
+    background-color: var(--light-cream);
+}
+
+.feature-card {
+    background: var(--white);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(45, 80, 22, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.feature-icon {
+    animation: bounce 2s infinite;
+}
+
+/* ==========================================
+   產品區塊樣式
+   ========================================== */
+
+.products-section {
+    background-color: var(--white);
+}
+
+.product-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-image-container {
+    position: relative;
+    height: 250px;
+    background-color: var(--light-gray);
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image-container img {
+    transform: scale(1.05);
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+}
+
+/* ==========================================
+   關於我們區塊樣式
+   ========================================== */
+
+.about-section {
+    background-color: var(--light-cream);
+}
+
+.about-image-container img {
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.stat-item {
+    padding: 1rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================
+   電子報區塊樣式
+   ========================================== */
+
+.newsletter-section {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--soft-green) 100%);
+}
+
+.newsletter-form .form-control {
+    border-radius: 50px 0 0 50px;
+    border: none;
+    padding: 1rem 1.5rem;
+}
+
+.newsletter-form .btn {
+    border-radius: 0 50px 50px 0;
+    padding: 1rem 2rem;
+}
+
+/* ==========================================
+   頁尾樣式
+   ========================================== */
+
+.footer {
+    background-color: var(--dark-gray) !important;
+}
+
+.footer .social-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.footer .social-links a:hover {
+    background-color: var(--warm-yellow);
+    color: var(--primary-green) !important;
+    transform: translateY(-3px);
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+}
+
+.contact-info i {
+    color: var(--warm-yellow);
+    width: 20px;
+}
+
+/* ==========================================
+   動畫效果
+   ========================================== */
+
+/* 已停用動畫：保留空 keyframes 以避免外部引用報錯 */
+@keyframes fadeInUp { from { opacity:1; transform:none; } to { opacity:1; transform:none; } }
+@keyframes fadeInRight { from { opacity:1; transform:none; } to { opacity:1; transform:none; } }
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    40%, 43% {
+        transform: translate3d(0, -15px, 0);
+    }
+    70% {
+        transform: translate3d(0, -7px, 0);
+    }
+    90% {
+        transform: translate3d(0, -2px, 0);
+    }
+}
+
+/* ==========================================
+   響應式設計
+   ========================================== */
+
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        padding: 2rem 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .display-6 {
+        font-size: 2rem;
+    }
+    
+    .feature-card,
+    .product-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .newsletter-form {
+        margin-top: 1rem;
+    }
+    
+    .newsletter-form .input-group {
+        flex-direction: column;
+    }
+    
+    .newsletter-form .form-control {
+        border-radius: 25px;
+        margin-bottom: 1rem;
+    }
+    
+    .newsletter-form .btn {
+        border-radius: 25px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .lead {
+        font-size: 1rem;
+    }
+}
+
+/* ==========================================
+   平滑滾動效果
+   ========================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==========================================
+   按鈕樣式增強
+   ========================================== */
+
+.btn {
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+    color: var(--white);
+}
+
+/* ==========================================
+   卡片陰影增強
+   ========================================== */
+
+.card {
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(45, 80, 22, 0.1);
+}
+
+.shadow-sm {
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow {
+    box-shadow: var(--shadow) !important;
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* ==========================================
+   徽章樣式
+   ========================================== */
+
+.badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 15px;
+}
+
+.bg-success {
+    background-color: var(--soft-green) !important;
+}
+
+.bg-warning {
+    background-color: var(--warm-yellow) !important;
+    color: var(--primary-green) !important;
+}
+
+/* ==========================================
+   表單樣式
+   ========================================== */
+
+.form-control:focus {
+    border-color: var(--soft-green);
+    box-shadow: 0 0 0 0.2rem rgba(107, 142, 84, 0.25);
+}
+
+/* ==========================================
+   關閉所有微動畫與淡入效果 (需求：移除圖片、卡片初始 opacity:0 與動畫)
+   ========================================== */
+.hero-content,
+.feature-card,
+.product-card {
+    opacity: 1 !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* 移除原延遲設定，保留選擇器防止舊快取或其他檔案覆寫 */
+.feature-card:nth-child(1),
+.feature-card:nth-child(2),
+.feature-card:nth-child(3),
+.product-card:nth-child(1),
+.product-card:nth-child(2),
+.product-card:nth-child(3),
+.product-card:nth-child(4) {
+    animation: none !important;
+}
+
+/* 全站圖片關閉動畫與轉場，確保顯示 */
+img {
+    opacity: 1 !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* ==========================================
+   修正 Sidebar 覆蓋問題
+   ========================================== */
+
+.sidebar {
+    z-index: 1000 !important;
+}
+
+.offcanvas {
+    z-index: 1045 !important;
+}
+
+.modal {
+    z-index: 1055 !important;
+}
+
+.dropdown-menu {
+    z-index: 1000 !important;
+}
+
+/* 確保 sticky navbar 始終在最上層 */
+.navbar.sticky-top {
+    z-index: 1060 !important;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0 !important;
+}
+/* ==========================================
+   Footer 文字顏色覆寫：全部改為白色
+   ========================================== */
+.footer, .footer p, .footer a, .footer li, .footer .text-muted, .footer .contact-info p {
+    color: #ffffff !important;
+}
+.footer a:hover {
+    color: var(--warm-yellow) !important;
+}
+.footer .social-links a {
+    color: #ffffff !important;
+}

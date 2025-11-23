@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品管理 - 後台管理系統</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Admin CSS -->
+    <link href="css/admin.css" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- 側邊欄 -->
+        <nav class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-brand">
+                    <i class="fas fa-leaf"></i>
+                    蔬果管理系統
+                </a>
+            </div>
+            
+            <div class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">主要功能</div>
+                    <div class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="fas fa-tachometer-alt"></i>
+                            儀表板
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">產品管理</div>
+                    <div class="nav-item">
+                        <a href="products.html" class="nav-link active">
+                            <i class="fas fa-box"></i>
+                            產品列表
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="product-categories.html" class="nav-link">
+                            <i class="fas fa-tags"></i>
+                            產品分類
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="inventory.html" class="nav-link">
+                            <i class="fas fa-warehouse"></i>
+                            庫存管理
+                            <span class="badge">5</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">訂單管理</div>
+                    <div class="nav-item">
+                        <a href="orders.html" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            訂單列表
+                            <span class="badge">12</span>
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="customers.html" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            客戶管理
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">內容管理</div>
+                    <div class="nav-item">
+                        <a href="news.html" class="nav-link">
+                            <i class="fas fa-newspaper"></i>
+                            最新消息
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="blog.html" class="nav-link">
+                            <i class="fas fa-blog"></i>
+                            部落格文章
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="pages.html" class="nav-link">
+                            <i class="fas fa-file-alt"></i>
+                            頁面管理
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">系統設定</div>
+                    <div class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            系統設定
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="users.html" class="nav-link">
+                            <i class="fas fa-user-cog"></i>
+                            用戶管理
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- 主要內容區 -->
+        <main class="admin-main">
+            <!-- 頂部導航欄 -->
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="dashboard.html">首頁</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">產品管理</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                產品列表
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="搜尋產品..." class="form-control" id="productSearch">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="user-menu">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="管理員" class="user-avatar">
+                    </div>
+                </div>
+            </header>
+            
+            <!-- 內容區域 -->
+            <div class="admin-content">
+                <div class="content-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h1 class="page-title">產品管理</h1>
+                            <p class="page-description">管理所有蔬果產品資訊</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn-admin btn-outline" data-action="export" data-format="csv" data-table="products">
+                                <i class="fas fa-download"></i>
+                                導出CSV
+                            </button>
+                            <button class="btn-admin btn-primary" data-modal-target="addProductModal">
+                                <i class="fas fa-plus"></i>
+                                新增產品
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 篩選器和工具欄 -->
+                <div class="admin-card">
+                    <div class="card-body">
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-3">
+                                <label for="categoryFilter" class="form-label">產品分類</label>
+                                <select class="form-select" id="categoryFilter">
+                                    <option value="">全部分類</option>
+                                    <option value="vegetables">蔬菜類</option>
+                                    <option value="fruits">水果類</option>
+                                    <option value="leafy">葉菜類</option>
+                                    <option value="root">根莖類</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="statusFilter" class="form-label">產品狀態</label>
+                                <select class="form-select" id="statusFilter">
+                                    <option value="">全部狀態</option>
+                                    <option value="active">上架中</option>
+                                    <option value="inactive">已下架</option>
+                                    <option value="draft">草稿</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="priceRange" class="form-label">價格範圍</label>
+                                <select class="form-select" id="priceRange">
+                                    <option value="">全部價格</option>
+                                    <option value="0-50">$0 - $50</option>
+                                    <option value="51-100">$51 - $100</option>
+                                    <option value="101-200">$101 - $200</option>
+                                    <option value="201+">$201以上</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn-admin btn-outline w-100" onclick="resetFilters()">
+                                    <i class="fas fa-refresh"></i>
+                                    重置篩選
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 批量操作工具欄 -->
+                <div class="bulk-actions" style="display: none;">
+                    <div class="alert alert-info d-flex justify-content-between align-items-center">
+                        <span id="selectedCount">已選擇 0 個產品</span>
+                        <div class="d-flex gap-2">
+                            <button class="btn-admin btn-sm btn-warning" onclick="bulkAction('enable')">
+                                <i class="fas fa-eye"></i> 批量上架
+                            </button>
+                            <button class="btn-admin btn-sm btn-outline" onclick="bulkAction('disable')">
+                                <i class="fas fa-eye-slash"></i> 批量下架
+                            </button>
+                            <button class="btn-admin btn-sm btn-danger" onclick="bulkAction('delete')">
+                                <i class="fas fa-trash"></i> 批量刪除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 產品列表 -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h3 class="card-title">產品列表 (共 156 件商品)</h3>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="small text-muted">顯示:</span>
+                            <select class="form-select form-select-sm" style="width: auto;" onchange="changePageSize(this.value)">
+                                <option value="10">10</option>
+                                <option value="25" selected>25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th width="40">
+                                        <input type="checkbox" id="selectAll" class="form-check-input">
+                                    </th>
+                                    <th width="80">圖片</th>
+                                    <th class="sortable-header" data-column="name" data-sort="none">
+                                        產品名稱
+                                    </th>
+                                    <th class="sortable-header" data-column="category" data-sort="none">
+                                        分類
+                                    </th>
+                                    <th class="sortable-header" data-column="price" data-sort="none">
+                                        價格
+                                    </th>
+                                    <th class="sortable-header" data-column="stock" data-sort="none">
+                                        庫存
+                                    </th>
+                                    <th class="sortable-header" data-column="status" data-sort="none">
+                                        狀態
+                                    </th>
+                                    <th class="sortable-header" data-column="updated" data-sort="none">
+                                        更新時間
+                                    </th>
+                                    <th width="120">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input row-checkbox">
+                                    </td>
+                                    <td>
+                                        <img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" 
+                                             alt="有機波菜" class="product-thumb" 
+                                             style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover;">
+                                    </td>
+                                    <td>
+                                        <div class="fw-semibold">有機波菜</div>
+                                        <div class="small text-muted">SKU: VEG001</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge" style="background: rgba(45, 80, 22, 0.1); color: #2d5016;">蔬菜類</span>
+                                    </td>
+                                    <td class="fw-semibold">$80/把</td>
+                                    <td>
+                                        <span class="fw-semibold text-warning">5</span>
+                                        <small class="text-muted d-block">低庫存</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge active">上架中</span>
+                                    </td>
+                                    <td class="text-muted">2024-11-22</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-admin btn-sm btn-primary" data-modal-target="editProductModal" data-product-id="1">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn-admin btn-sm btn-danger" data-action="delete" data-item-name="有機波菜">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input row-checkbox">
+                                    </td>
+                                    <td>
+                                        <img src="https://images.unsplash.com/photo-1445282768818-728615cc910a?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" 
+                                             alt="有機胡蘿蔔" class="product-thumb" 
+                                             style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover;">
+                                    </td>
+                                    <td>
+                                        <div class="fw-semibold">有機胡蘿蔔</div>
+                                        <div class="small text-muted">SKU: VEG002</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge" style="background: rgba(45, 80, 22, 0.1); color: #2d5016;">根莖類</span>
+                                    </td>
+                                    <td class="fw-semibold">$120/斤</td>
+                                    <td>
+                                        <span class="fw-semibold text-success">25</span>
+                                        <small class="text-muted d-block">充足</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge active">上架中</span>
+                                    </td>
+                                    <td class="text-muted">2024-11-21</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-admin btn-sm btn-primary" data-modal-target="editProductModal" data-product-id="2">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn-admin btn-sm btn-danger" data-action="delete" data-item-name="有機胡蘿蔔">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input row-checkbox">
+                                    </td>
+                                    <td>
+                                        <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" 
+                                             alt="有機蘋果" class="product-thumb" 
+                                             style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover;">
+                                    </td>
+                                    <td>
+                                        <div class="fw-semibold">有機蘋果</div>
+                                        <div class="small text-muted">SKU: FRU001</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge" style="background: rgba(255, 193, 7, 0.1); color: #ffc107;">水果類</span>
+                                    </td>
+                                    <td class="fw-semibold">$200/斤</td>
+                                    <td>
+                                        <span class="fw-semibold text-success">18</span>
+                                        <small class="text-muted d-block">充足</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge active">上架中</span>
+                                    </td>
+                                    <td class="text-muted">2024-11-20</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-admin btn-sm btn-primary" data-modal-target="editProductModal" data-product-id="3">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn-admin btn-sm btn-danger" data-action="delete" data-item-name="有機蘋果">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input row-checkbox">
+                                    </td>
+                                    <td>
+                                        <img src="https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" 
+                                             alt="有機小白菜" class="product-thumb" 
+                                             style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover;">
+                                    </td>
+                                    <td>
+                                        <div class="fw-semibold">有機小白菜</div>
+                                        <div class="small text-muted">SKU: VEG003</div>
+                                    </td>
+                                    <td>
+                                        <span class="badge" style="background: rgba(45, 80, 22, 0.1); color: #2d5016;">葉菜類</span>
+                                    </td>
+                                    <td class="fw-semibold">$60/把</td>
+                                    <td>
+                                        <span class="fw-semibold text-danger">0</span>
+                                        <small class="text-muted d-block">缺貨</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge inactive">已下架</span>
+                                    </td>
+                                    <td class="text-muted">2024-11-19</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-admin btn-sm btn-primary" data-modal-target="editProductModal" data-product-id="4">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn-admin btn-sm btn-danger" data-action="delete" data-item-name="有機小白菜">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- 分頁 -->
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="text-muted">
+                                顯示 1-25 項，共 156 項
+                            </div>
+                            <div class="pagination">
+                                <a href="#" class="page-btn" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                                <a href="#" class="page-btn active">1</a>
+                                <a href="#" class="page-btn">2</a>
+                                <a href="#" class="page-btn">3</a>
+                                <span class="page-btn">...</span>
+                                <a href="#" class="page-btn">7</a>
+                                <a href="#" class="page-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- 新增產品模態框 -->
+    <div id="addProductModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3 class="modal-title">新增產品</h3>
+                <button type="button" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addProductForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="productName" class="form-label">產品名稱 *</label>
+                                <input type="text" class="form-control" id="productName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="productSKU" class="form-label">產品編號 (SKU)</label>
+                                <input type="text" class="form-control" id="productSKU">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="productCategory" class="form-label">產品分類 *</label>
+                                <select class="form-select" id="productCategory" required>
+                                    <option value="">選擇分類</option>
+                                    <option value="vegetables">蔬菜類</option>
+                                    <option value="fruits">水果類</option>
+                                    <option value="leafy">葉菜類</option>
+                                    <option value="root">根莖類</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="productStatus" class="form-label">產品狀態</label>
+                                <select class="form-select" id="productStatus">
+                                    <option value="active">上架中</option>
+                                    <option value="inactive">已下架</option>
+                                    <option value="draft">草稿</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="productPrice" class="form-label">價格 *</label>
+                                <input type="number" class="form-control" id="productPrice" required min="0" step="0.01">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="productUnit" class="form-label">計價單位</label>
+                                <select class="form-select" id="productUnit">
+                                    <option value="把">把</option>
+                                    <option value="斤">斤</option>
+                                    <option value="公斤">公斤</option>
+                                    <option value="個">個</option>
+                                    <option value="盒">盒</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="productStock" class="form-label">庫存數量</label>
+                                <input type="number" class="form-control" id="productStock" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productDescription" class="form-label">產品描述</label>
+                        <textarea class="form-control" id="productDescription" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productImage" class="form-label">產品圖片</label>
+                        <input type="file" class="form-control" id="productImage" accept="image/*">
+                        <div class="form-text">支援 JPG, PNG 格式，建議尺寸 800x600 像素</div>
+                        <div class="image-preview mt-2"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-admin btn-outline modal-close">取消</button>
+                <button type="submit" form="addProductForm" class="btn-admin btn-primary" data-action="save">
+                    <i class="fas fa-save"></i>
+                    保存產品
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 編輯產品模態框 -->
+    <div id="editProductModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3 class="modal-title">編輯產品</h3>
+                <button type="button" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editProductForm">
+                    <!-- 與新增表單相同的欄位 -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editProductName" class="form-label">產品名稱 *</label>
+                                <input type="text" class="form-control" id="editProductName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="editProductSKU" class="form-label">產品編號 (SKU)</label>
+                                <input type="text" class="form-control" id="editProductSKU">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 其他欄位... -->
+                </form>
+                <div class="auto-save-status"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-admin btn-outline modal-close">取消</button>
+                <button type="submit" form="editProductForm" class="btn-admin btn-primary">
+                    <i class="fas fa-save"></i>
+                    更新產品
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Admin JS -->
+    <script src="js/admin.js"></script>
+    
+    <!-- Page specific scripts -->
+    <script>
+        // 篩選功能
+        function resetFilters() {
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('statusFilter').value = '';
+            document.getElementById('priceRange').value = '';
+            filterProducts();
+        }
+        
+        function filterProducts() {
+            // 實現產品篩選邏輯
+            console.log('篩選產品');
+        }
+        
+        // 批量操作
+        function bulkAction(action) {
+            const selectedItems = document.querySelectorAll('.row-checkbox:checked');
+            if (selectedItems.length === 0) {
+                alert('請先選擇要操作的產品');
+                return;
+            }
+            
+            let message = '';
+            switch(action) {
+                case 'enable':
+                    message = `確定要上架選中的 ${selectedItems.length} 個產品嗎？`;
+                    break;
+                case 'disable':
+                    message = `確定要下架選中的 ${selectedItems.length} 個產品嗎？`;
+                    break;
+                case 'delete':
+                    message = `確定要刪除選中的 ${selectedItems.length} 個產品嗎？此操作無法復原！`;
+                    break;
+            }
+            
+            if (confirm(message)) {
+                // 實現批量操作邏輯
+                console.log(`批量${action}`, selectedItems);
+                showNotification(`已成功${action === 'enable' ? '上架' : action === 'disable' ? '下架' : '刪除'} ${selectedItems.length} 個產品`, 'success');
+            }
+        }
+        
+        // 更改每頁顯示數量
+        function changePageSize(size) {
+            console.log('更改每頁顯示數量:', size);
+            // 實現分頁邏輯
+        }
+        
+        // 初始化篩選事件
+        document.addEventListener('DOMContentLoaded', function() {
+            // 綁定篩選器事件
+            ['categoryFilter', 'statusFilter', 'priceRange'].forEach(filterId => {
+                document.getElementById(filterId).addEventListener('change', filterProducts);
+            });
+            
+            // 產品搜尋
+            const searchInput = document.getElementById('productSearch');
+            let searchTimeout;
+            
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    console.log('搜尋產品:', this.value);
+                    // 實現搜尋邏輯
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
