@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>頁面管理 - 後台管理系統</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="css/admin.css" rel="stylesheet" />
+</head>
+<body>
+<div class="admin-container">
+  <nav class="admin-sidebar">
+    <div class="sidebar-header"><a href="dashboard.html" class="sidebar-brand"><i class="fas fa-leaf"></i> 蔬果管理系統</a></div>
+    <div class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-section-title">主要功能</div>
+        <div class="nav-item"><a href="dashboard.html" class="nav-link"><i class="fas fa-tachometer-alt"></i> 儀表板</a></div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">產品管理</div>
+        <div class="nav-item"><a href="products.html" class="nav-link"><i class="fas fa-box"></i> 產品列表</a></div>
+        <div class="nav-item"><a href="product-categories.html" class="nav-link"><i class="fas fa-tags"></i> 產品分類</a></div>
+        <div class="nav-item"><a href="inventory.html" class="nav-link"><i class="fas fa-warehouse"></i> 庫存管理</a></div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">內容管理</div>
+        <div class="nav-item"><a href="news.html" class="nav-link"><i class="fas fa-newspaper"></i> 最新消息</a></div>
+        <div class="nav-item"><a href="blog.html" class="nav-link"><i class="fas fa-blog"></i> 部落格文章</a></div>
+        <div class="nav-item"><a href="pages.html" class="nav-link active"><i class="fas fa-file-alt"></i> 頁面管理 <span class="badge">6</span></a></div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">訂單與客戶</div>
+        <div class="nav-item"><a href="orders.html" class="nav-link"><i class="fas fa-shopping-cart"></i> 訂單列表</a></div>
+        <div class="nav-item"><a href="customers.html" class="nav-link"><i class="fas fa-users"></i> 客戶管理</a></div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">系統</div>
+        <div class="nav-item"><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> 系統設定</a></div>
+      </div>
+    </div>
+  </nav>
+  <main class="admin-main">
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="sidebar-toggle"><i class="fas fa-bars"></i></button>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="dashboard.html">首頁</a></li>
+            <li class="breadcrumb-item">內容管理</li>
+            <li class="breadcrumb-item active" aria-current="page">頁面管理</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="header-right">
+        <div class="header-search">
+          <input type="text" class="form-control" placeholder="搜尋頁面標題..." />
+          <i class="fas fa-search"></i>
+        </div>
+        <img src="images/person-admin.jpg" class="user-avatar" alt="管理員" />
+      </div>
+    </header>
+    <div class="admin-content">
+      <div class="content-header d-flex justify-content-between align-items-center">
+        <div>
+          <h1 class="page-title">頁面管理</h1>
+          <p class="page-description">管理前台靜態頁面內容（關於我們、FAQ、聯絡我們等）</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn-admin btn-outline" onclick="openSeoModal()"><i class="fas fa-chart-line"></i> SEO 設定</button>
+          <button class="btn-admin btn-primary" data-modal-target="pageModal"><i class="fas fa-plus"></i> 新增頁面</button>
+        </div>
+      </div>
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card info">
+          <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+          <div class="stat-number">6</div>
+          <div class="stat-label">頁面總數</div>
+          <div class="stat-change"><i class="fas fa-sync"></i> 已更新</div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-icon"><i class="fas fa-eye"></i></div>
+          <div class="stat-number">5</div>
+          <div class="stat-label">已發佈</div>
+          <div class="stat-change positive"><i class="fas fa-check"></i> 正常</div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-icon"><i class="fas fa-pencil"></i></div>
+          <div class="stat-number">1</div>
+          <div class="stat-label">草稿</div>
+          <div class="stat-change"><i class="fas fa-edit"></i> 待處理</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-link"></i></div>
+          <div class="stat-number">4</div>
+          <div class="stat-label">導覽列顯示</div>
+          <div class="stat-change"><i class="fas fa-bars"></i> 已配置</div>
+        </div>
+      </div>
+      <!-- Filters -->
+      <div class="admin-card">
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-3">
+              <label class="form-label">狀態</label>
+              <select class="form-select" id="pageStatusFilter">
+                <option value="">全部</option>
+                <option value="published">已發佈</option>
+                <option value="draft">草稿</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">顯示於導覽列</label>
+              <select class="form-select" id="pageNavFilter">
+                <option value="">全部</option>
+                <option value="yes">是</option>
+                <option value="no">否</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">排序</label>
+              <select class="form-select" id="pageSort">
+                <option value="recent">最新更新</option>
+                <option value="title">標題</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">關鍵字</label>
+              <input type="text" class="form-control" id="pageKeyword" placeholder="輸入標題關鍵字..." />
+            </div>
+            <div class="col-12 d-flex align-items-end">
+              <div class="d-flex w-100 gap-2">
+                <button class="btn-admin btn-outline flex-fill" onclick="resetPageFilters()"><i class="fas fa-refresh"></i> 重置</button>
+                <button class="btn-admin btn-primary flex-fill" onclick="applyPageFilters()"><i class="fas fa-filter"></i> 篩選</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pages Table -->
+      <div class="admin-card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h3 class="card-title">頁面列表</h3>
+          <div class="d-flex gap-2">
+            <button class="btn-admin btn-sm btn-outline" onclick="refreshPages()"><i class="fas fa-sync"></i> 更新</button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="admin-table mb-0">
+              <thead>
+                <tr>
+                  <th width="40"><input type="checkbox" class="form-check-input" id="selectAllPages" /></th>
+                  <th>標題</th>
+                  <th width="120">URL Slug</th>
+                  <th width="120">導覽列</th>
+                  <th width="120">狀態</th>
+                  <th width="140">操作</th>
+                </tr>
+              </thead>
+              <tbody id="pagesTableBody">
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td><div class="fw-semibold">關於我們</div><div class="small text-muted">2024-03-20 更新</div></td>
+                  <td>about</td>
+                  <td><span class="badge bg-success">是</span></td>
+                  <td><span class="status-badge active">已發佈</span></td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="btn-admin btn-sm btn-warning" onclick="editPage('關於我們')"><i class="fas fa-edit"></i></button>
+                      <button class="btn-admin btn-sm btn-outline" onclick="previewPage('關於我們')"><i class="fas fa-eye"></i></button>
+                      <button class="btn-admin btn-sm btn-danger" onclick="deletePage('關於我們')"><i class="fas fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td><div class="fw-semibold">FAQ 常見問題</div><div class="small text-muted">2024-03-19 更新</div></td>
+                  <td>faq</td>
+                  <td><span class="badge bg-success">是</span></td>
+                  <td><span class="status-badge active">已發佈</span></td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="btn-admin btn-sm btn-warning" onclick="editPage('FAQ 常見問題')"><i class="fas fa-edit"></i></button>
+                      <button class="btn-admin btn-sm btn-outline" onclick="previewPage('FAQ 常見問題')"><i class="fas fa-eye"></i></button>
+                      <button class="btn-admin btn-sm btn-danger" onclick="deletePage('FAQ 常見問題')"><i class="fas fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td><div class="fw-semibold">聯絡我們</div><div class="small text-muted">2024-03-15 更新</div></td>
+                  <td>contact</td>
+                  <td><span class="badge bg-success">是</span></td>
+                  <td><span class="status-badge active">已發佈</span></td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="btn-admin btn-sm btn-warning" onclick="editPage('聯絡我們')"><i class="fas fa-edit"></i></button>
+                      <button class="btn-admin btn-sm btn-outline" onclick="previewPage('聯絡我們')"><i class="fas fa-eye"></i></button>
+                      <button class="btn-admin btn-sm btn-danger" onclick="deletePage('聯絡我們')"><i class="fas fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td><div class="fw-semibold">門市據點</div><div class="small text-muted">2024-03-15 更新</div></td>
+                  <td>stores</td>
+                  <td><span class="badge bg-success">是</span></td>
+                  <td><span class="status-badge active">已發佈</span></td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="btn-admin btn-sm btn-warning" onclick="editPage('門市據點')"><i class="fas fa-edit"></i></button>
+                      <button class="btn-admin btn-sm btn-outline" onclick="previewPage('門市據點')"><i class="fas fa-eye"></i></button>
+                      <button class="btn-admin btn-sm btn-danger" onclick="deletePage('門市據點')"><i class="fas fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td><div class="fw-semibold">隱私權政策</div><div class="small text-muted">2024-03-10 更新</div></td>
+                  <td>privacy</td>
+                  <td><span class="badge bg-secondary">否</span></td>
+                  <td><span class="status-badge active">已發佈</span></td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="btn-admin btn-sm btn-warning" onclick="editPage('隱私權政策')"><i class="fas fa-edit"></i></button>
+                      <button class="btn-admin btn-sm btn-outline" onclick="previewPage('隱私權政策')"><i class="fas fa-eye"></i></button>
+                      <button class="btn-admin btn-sm btn-danger" onclick="deletePage('隱私權政策')"><i class="fas fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td><div class="fw-semibold">蔬果永續理念</div><div class="small text-muted">2024-03-08 更新</div></td>
+                  <td>sustainability</td>
+                  <td><span class="badge bg-secondary">否</span></td>
+                  <td><span class="status-badge warning">草稿</span></td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="btn-admin btn-sm btn-warning" onclick="editPage('蔬果永續理念')"><i class="fas fa-edit"></i></button>
+                      <button class="btn-admin btn-sm btn-outline" onclick="previewPage('蔬果永續理念')"><i class="fas fa-eye"></i></button>
+                      <button class="btn-admin btn-sm btn-danger" onclick="deletePage('蔬果永續理念')"><i class="fas fa-trash"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="small text-muted">顯示 1-6 筆，共 6 筆</div>
+            <div class="pagination">
+              <a href="#" class="page-btn active">1</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!-- 新增/編輯頁面 Modal -->
+<div id="pageModal" class="modal-overlay" style="display:none;">
+  <div class="modal-content" style="max-width:900px;">
+    <div class="modal-header">
+      <h3 class="modal-title" id="pageModalTitle">新增頁面</h3>
+      <button type="button" class="modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="pageForm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">標題</label>
+            <input type="text" class="form-control" id="pageTitle" />
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">URL Slug</label>
+            <input type="text" class="form-control" id="pageSlug" placeholder="about" />
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">狀態</label>
+            <select class="form-select" id="pageStatus">
+              <option value="draft">草稿</option>
+              <option value="published">已發佈</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">導覽列顯示</label>
+            <select class="form-select" id="pageShowNav">
+              <option value="yes">是</option>
+              <option value="no">否</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">排序順序 (選填)</label>
+            <input type="number" class="form-control" id="pageOrder" placeholder="1" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">封面圖片 URL</label>
+            <input type="text" class="form-control" id="pageCover" placeholder="./images/page-cover.jpg" />
+          </div>
+          <div class="col-12">
+            <label class="form-label">內容</label>
+            <textarea class="form-control" id="pageContent" rows="8" placeholder="頁面內文..."></textarea>
+          </div>
+          <div class="col-12">
+            <label class="form-label">SEO 描述</label>
+            <textarea class="form-control" id="pageSeo" rows="2" placeholder="簡短描述用於搜尋引擎"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn-admin btn-outline modal-close">取消</button>
+      <button type="button" class="btn-admin btn-primary" onclick="savePage()"><i class="fas fa-save"></i> 保存</button>
+    </div>
+  </div>
+</div>
+<!-- SEO 設定 Modal -->
+<div id="seoModal" class="modal-overlay" style="display:none;">
+  <div class="modal-content" style="max-width:700px;">
+    <div class="modal-header">
+      <h3 class="modal-title">全站頁面 SEO 設定</h3>
+      <button type="button" class="modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="seoForm">
+        <div class="mb-3">
+          <label class="form-label">全站標題後綴</label>
+          <input type="text" class="form-control" id="seoSuffix" placeholder="| 有機蔬果商城" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">預設描述</label>
+          <textarea class="form-control" id="seoDefaultDesc" rows="3" placeholder="預設的SEO描述文字"></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">關鍵字 (逗號分隔)</label>
+          <input type="text" class="form-control" id="seoKeywords" placeholder="有機,蔬菜,水果" />
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn-admin btn-outline modal-close">關閉</button>
+      <button type="button" class="btn-admin btn-primary" onclick="saveSeo()"><i class="fas fa-save"></i> 保存</button>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/admin.js"></script>
+<script>
+function editPage(title){document.getElementById('pageModalTitle').textContent='編輯頁面 - '+title;document.getElementById('pageModal').style.display='flex';}
+function previewPage(title){alert('預覽頁面: '+title+' (示範)');}
+function deletePage(title){if(confirm('確定刪除頁面 '+title+'?')){alert('已刪除 (示範)');}}
+function savePage(){alert('頁面已保存 (示範)');document.getElementById('pageModal').style.display='none';}
+function openSeoModal(){document.getElementById('seoModal').style.display='flex';}
+function saveSeo(){alert('SEO 設定已保存 (示範)');document.getElementById('seoModal').style.display='none';}
+function resetPageFilters(){document.getElementById('pageStatusFilter').value='';document.getElementById('pageNavFilter').value='';document.getElementById('pageSort').value='recent';document.getElementById('pageKeyword').value='';}
+function applyPageFilters(){alert('套用頁面篩選 (示範)');}
+function refreshPages(){alert('更新頁面列表 (示範)');}
+</script>
+</body>
+</html>

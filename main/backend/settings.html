@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系統設定 - 後台管理系統</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Admin CSS -->
+    <link href="css/admin.css" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- 側邊欄 -->
+        <nav class="admin-sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-brand">
+                    <i class="fas fa-leaf"></i>
+                    蔬果管理系統
+                </a>
+            </div>
+            
+            <div class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">主要功能</div>
+                    <div class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="fas fa-tachometer-alt"></i>
+                            儀表板
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">產品管理</div>
+                    <div class="nav-item">
+                        <a href="products.html" class="nav-link">
+                            <i class="fas fa-box"></i>
+                            產品列表
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="product-categories.html" class="nav-link">
+                            <i class="fas fa-tags"></i>
+                            產品分類
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="inventory.html" class="nav-link">
+                            <i class="fas fa-warehouse"></i>
+                            庫存管理
+                            <span class="badge">5</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">訂單管理</div>
+                    <div class="nav-item">
+                        <a href="orders.html" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            訂單列表
+                            <span class="badge">12</span>
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="customers.html" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            客戶管理
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">內容管理</div>
+                    <div class="nav-item">
+                        <a href="news.html" class="nav-link">
+                            <i class="fas fa-newspaper"></i>
+                            最新消息
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="blog.html" class="nav-link">
+                            <i class="fas fa-blog"></i>
+                            部落格文章
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="pages.html" class="nav-link">
+                            <i class="fas fa-file-alt"></i>
+                            頁面管理
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">系統設定</div>
+                    <div class="nav-item">
+                        <a href="settings.html" class="nav-link active">
+                            <i class="fas fa-cog"></i>
+                            系統設定
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="users.html" class="nav-link">
+                            <i class="fas fa-user-cog"></i>
+                            用戶管理
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- 主要內容區 -->
+        <main class="admin-main">
+            <!-- 頂部導航欄 -->
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="dashboard.html">首頁</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">系統設定</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                系統設定
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="搜尋設定..." class="form-control">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="user-menu">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="管理員" class="user-avatar">
+                    </div>
+                </div>
+            </header>
+            
+            <!-- 內容區域 -->
+            <div class="admin-content">
+                <div class="content-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h1 class="page-title">系統設定</h1>
+                            <p class="page-description">管理系統基本設定與配置</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn-admin btn-outline" onclick="resetSettings()">
+                                <i class="fas fa-undo"></i>
+                                重置設定
+                            </button>
+                            <button class="btn-admin btn-primary" onclick="saveAllSettings()">
+                                <i class="fas fa-save"></i>
+                                保存所有設定
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 設定導航 -->
+                <div class="admin-card">
+                    <div class="card-body">
+                        <ul class="nav nav-pills nav-fill" id="settingsTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="general-tab" data-bs-toggle="pill" data-bs-target="#general" type="button" role="tab">
+                                    <i class="fas fa-cog"></i>
+                                    一般設定
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="payment-tab" data-bs-toggle="pill" data-bs-target="#payment" type="button" role="tab">
+                                    <i class="fas fa-credit-card"></i>
+                                    付款設定
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="shipping-tab" data-bs-toggle="pill" data-bs-target="#shipping" type="button" role="tab">
+                                    <i class="fas fa-truck"></i>
+                                    配送設定
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="email-tab" data-bs-toggle="pill" data-bs-target="#email" type="button" role="tab">
+                                    <i class="fas fa-envelope"></i>
+                                    郵件設定
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="security-tab" data-bs-toggle="pill" data-bs-target="#security" type="button" role="tab">
+                                    <i class="fas fa-shield-alt"></i>
+                                    安全設定
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 設定內容 -->
+                <div class="tab-content">
+                    <!-- 一般設定 -->
+                    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">網站基本設定</h3>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="siteName" class="form-label">網站名稱</label>
+                                            <input type="text" class="form-control" id="siteName" value="新鮮蔬果館">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="siteUrl" class="form-label">網站網址</label>
+                                            <input type="url" class="form-control" id="siteUrl" value="https://freshveggies.com">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="siteDescription" class="form-label">網站描述</label>
+                                            <textarea class="form-control" id="siteDescription" rows="3">提供最新鮮優質的有機蔬果，直送到府的健康生活選擇</textarea>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="defaultCurrency" class="form-label">預設貨幣</label>
+                                            <select class="form-select" id="defaultCurrency">
+                                                <option value="TWD" selected>台幣 (TWD)</option>
+                                                <option value="USD">美元 (USD)</option>
+                                                <option value="EUR">歐元 (EUR)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="timezone" class="form-label">時區</label>
+                                            <select class="form-select" id="timezone">
+                                                <option value="Asia/Taipei" selected>台北時間 (UTC+8)</option>
+                                                <option value="UTC">UTC標準時間</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="language" class="form-label">預設語言</label>
+                                            <select class="form-select" id="language">
+                                                <option value="zh-TW" selected>繁體中文</option>
+                                                <option value="zh-CN">簡體中文</option>
+                                                <option value="en">English</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">聯絡資訊</h3>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="companyName" class="form-label">公司名稱</label>
+                                            <input type="text" class="form-control" id="companyName" value="新鮮蔬果有限公司">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contactPhone" class="form-label">客服電話</label>
+                                            <input type="tel" class="form-control" id="contactPhone" value="02-1234-5678">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contactEmail" class="form-label">客服信箱</label>
+                                            <input type="email" class="form-control" id="contactEmail" value="service@freshveggies.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="businessHours" class="form-label">營業時間</label>
+                                            <input type="text" class="form-control" id="businessHours" value="週一至週五 09:00-18:00">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="companyAddress" class="form-label">公司地址</label>
+                                            <textarea class="form-control" id="companyAddress" rows="2">台北市信義區信義路五段7號12樓</textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 付款設定 -->
+                    <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">付款方式設定</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="payment-method">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5 class="mb-1">信用卡付款</h5>
+                                            <p class="text-muted mb-0">支援 Visa、MasterCard、JCB</p>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="creditCardEnabled" checked>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="merchantId" class="form-label">商店代號</label>
+                                            <input type="text" class="form-control" id="merchantId" value="FRESH001">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="merchantKey" class="form-label">商店金鑰</label>
+                                            <input type="password" class="form-control" id="merchantKey" value="********">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <div class="payment-method">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5 class="mb-1">ATM轉帳</h5>
+                                            <p class="text-muted mb-0">虛擬帳號自動轉帳</p>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="atmEnabled" checked>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="bankName" class="form-label">銀行名稱</label>
+                                            <input type="text" class="form-control" id="bankName" value="台灣銀行">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="bankAccount" class="form-label">銀行帳號</label>
+                                            <input type="text" class="form-control" id="bankAccount" value="012-345-678901">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <div class="payment-method">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5 class="mb-1">貨到付款</h5>
+                                            <p class="text-muted mb-0">配送時現金收款</p>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="codEnabled" checked>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="codFee" class="form-label">手續費金額</label>
+                                            <input type="number" class="form-control" id="codFee" value="30">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="codMinAmount" class="form-label">最低消費金額</label>
+                                            <input type="number" class="form-control" id="codMinAmount" value="500">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 配送設定 -->
+                    <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">配送方式設定</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="shipping-method">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5 class="mb-1">宅配服務</h5>
+                                            <p class="text-muted mb-0">一般宅配到府服務</p>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="homeDeliveryEnabled" checked>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label for="standardShippingFee" class="form-label">標準運費</label>
+                                            <input type="number" class="form-control" id="standardShippingFee" value="50">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="freeShippingThreshold" class="form-label">免運費門檻</label>
+                                            <input type="number" class="form-control" id="freeShippingThreshold" value="1000">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="deliveryDays" class="form-label">配送天數</label>
+                                            <select class="form-select" id="deliveryDays">
+                                                <option value="1-2">1-2天</option>
+                                                <option value="2-3" selected>2-3天</option>
+                                                <option value="3-5">3-5天</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <div class="shipping-method">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5 class="mb-1">超商取貨</h5>
+                                            <p class="text-muted mb-0">7-ELEVEN、全家便利商店</p>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="storePickupEnabled" checked>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="storePickupFee" class="form-label">取貨運費</label>
+                                            <input type="number" class="form-control" id="storePickupFee" value="60">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="maxStoreWeight" class="form-label">重量限制 (公斤)</label>
+                                            <input type="number" class="form-control" id="maxStoreWeight" value="5">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <div class="shipping-method">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h5 class="mb-1">急速配送</h5>
+                                            <p class="text-muted mb-0">當日配送服務 (限北部地區)</p>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="expressDeliveryEnabled">
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="expressShippingFee" class="form-label">急速配送費</label>
+                                            <input type="number" class="form-control" id="expressShippingFee" value="150">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="expressCutoffTime" class="form-label">截止時間</label>
+                                            <input type="time" class="form-control" id="expressCutoffTime" value="12:00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 郵件設定 -->
+                    <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="email-tab">
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">SMTP 伺服器設定</h3>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="smtpHost" class="form-label">SMTP 主機</label>
+                                            <input type="text" class="form-control" id="smtpHost" value="smtp.gmail.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="smtpPort" class="form-label">SMTP 連接埠</label>
+                                            <input type="number" class="form-control" id="smtpPort" value="587">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="smtpUsername" class="form-label">使用者名稱</label>
+                                            <input type="text" class="form-control" id="smtpUsername" value="noreply@freshveggies.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="smtpPassword" class="form-label">密碼</label>
+                                            <input type="password" class="form-control" id="smtpPassword" value="********">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="encryption" class="form-label">加密方式</label>
+                                            <select class="form-select" id="encryption">
+                                                <option value="tls" selected>TLS</option>
+                                                <option value="ssl">SSL</option>
+                                                <option value="none">無</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="d-flex align-items-end h-100">
+                                                <button type="button" class="btn-admin btn-outline" onclick="testEmailConnection()">
+                                                    <i class="fas fa-paper-plane"></i>
+                                                    測試連線
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">郵件模板設定</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="orderConfirmTemplate" class="form-label">訂單確認郵件</label>
+                                        <div class="input-group">
+                                            <select class="form-select" id="orderConfirmTemplate">
+                                                <option selected>預設模板</option>
+                                                <option>自訂模板 1</option>
+                                                <option>自訂模板 2</option>
+                                            </select>
+                                            <button class="btn-admin btn-outline" type="button">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="shippingNotificationTemplate" class="form-label">配送通知郵件</label>
+                                        <div class="input-group">
+                                            <select class="form-select" id="shippingNotificationTemplate">
+                                                <option selected>預設模板</option>
+                                                <option>自訂模板 1</option>
+                                            </select>
+                                            <button class="btn-admin btn-outline" type="button">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 安全設定 -->
+                    <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">登入安全設定</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="maxLoginAttempts" class="form-label">最大登入嘗試次數</label>
+                                        <input type="number" class="form-control" id="maxLoginAttempts" value="5">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lockoutDuration" class="form-label">鎖定時間 (分鐘)</label>
+                                        <input type="number" class="form-control" id="lockoutDuration" value="15">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="sessionTimeout" class="form-label">工作階段超時 (分鐘)</label>
+                                        <input type="number" class="form-control" id="sessionTimeout" value="30">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check form-switch mt-4">
+                                            <input class="form-check-input" type="checkbox" id="twoFactorAuth">
+                                            <label class="form-check-label" for="twoFactorAuth">
+                                                啟用雙重認證
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">密碼政策</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="minPasswordLength" class="form-label">最小密碼長度</label>
+                                        <input type="number" class="form-control" id="minPasswordLength" value="8">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="passwordExpiry" class="form-label">密碼到期 (天)</label>
+                                        <input type="number" class="form-control" id="passwordExpiry" value="90">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">密碼複雜度要求</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="requireUppercase" checked>
+                                                    <label class="form-check-label" for="requireUppercase">
+                                                        包含大寫字母
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="requireNumbers" checked>
+                                                    <label class="form-check-label" for="requireNumbers">
+                                                        包含數字
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="requireSpecialChars" checked>
+                                                    <label class="form-check-label" for="requireSpecialChars">
+                                                        包含特殊字元
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="preventReuse">
+                                                    <label class="form-check-label" for="preventReuse">
+                                                        禁止重複使用
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card">
+                            <div class="card-header">
+                                <h3 class="card-title">備份設定</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="backupFrequency" class="form-label">備份頻率</label>
+                                        <select class="form-select" id="backupFrequency">
+                                            <option value="daily" selected>每日</option>
+                                            <option value="weekly">每週</option>
+                                            <option value="monthly">每月</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="backupRetention" class="form-label">保留期限 (天)</label>
+                                        <input type="number" class="form-control" id="backupRetention" value="30">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check form-switch mt-4">
+                                            <input class="form-check-input" type="checkbox" id="autoBackup" checked>
+                                            <label class="form-check-label" for="autoBackup">
+                                                自動備份
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-end h-100">
+                                            <button type="button" class="btn-admin btn-warning" onclick="createBackup()">
+                                                <i class="fas fa-download"></i>
+                                                立即備份
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Admin JS -->
+    <script src="js/admin.js"></script>
+    
+    <!-- Page specific scripts -->
+    <script>
+        function saveAllSettings() {
+            console.log('保存所有設定');
+            // 實現設定保存功能
+            alert('設定已成功保存！');
+        }
+        
+        function resetSettings() {
+            if (confirm('確定要重置所有設定嗎？此操作無法復原。')) {
+                console.log('重置設定');
+                // 實現設定重置功能
+            }
+        }
+        
+        function testEmailConnection() {
+            console.log('測試郵件連線');
+            // 實現郵件連線測試
+            alert('郵件伺服器連線測試成功！');
+        }
+        
+        function createBackup() {
+            console.log('建立備份');
+            // 實現備份功能
+            alert('備份建立完成！');
+        }
+        
+        // 設定變更追踪
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    // 標記設定已變更
+                    this.classList.add('changed');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
